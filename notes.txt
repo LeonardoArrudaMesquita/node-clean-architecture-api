@@ -1,0 +1,38 @@
+* tsconfig.json *
+
+** target **
+
+Define o pacote de features que o seu JS vai ter, isso é definido de acordo com o suporte do seu ambiente.
+
+Caso você utilize alguma feature que não tem suporte na versão do JS definida no target, o seu build converterá o código para funcionar naquele target em específico.
+
+Ex:
+
+() => clg.log será transformada em uma function equivalente.
+
+Versões do JS
+
+O javascript possui versões no quais cada uma possui um pacote de features diferentes. Por padrão, os browsers aceitam todas as features do ES6 (versão mais antiga).
+
+Também existe a versão ESNext, que é a versão "futura" do ECMAScript, no qual ainda está em estágio experimental.
+
+VanillaJS
+
+Esse termo é usado quando referido ao JS puro, sem nenhuma biblioteca ou framework. O termo VanillaJS foi criado nos anos 2000 quando o JS não tinha muitas
+features e precisava de libs externas para fazer coisas que hoje são facilmente feitas com a versão "pura".
+
+ECMAScript ou Javascript
+
+Ecma International = Empresa responsável por criar padrões para tecnologia.
+
+ECMAScript = regras da linguagem
+JavaScript = linguagem real que você usa, com essas regras + recursos extras
+
+É como se o Javascript fosse feito em cima do ECMAScript com o objetivo de implementar uma tecnologia para a web.
+
+Quando uma versão do ECMAScript sai (A famosa ESNext), logo depois os browsers/node implementam essa nova versão para o ambiente Javascript.
+
+** module **
+
+É para qual padrão o typescript irá converter o seu código no build, geralmente usamos commonjs para abranger todos os ambientes. Lembrando que o module commonjs
+não irá converter todas as features do ES no build da aplicação, aparentemente ele só mudar o import e export pra require e exports.
