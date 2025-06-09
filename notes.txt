@@ -36,3 +36,9 @@ Quando uma versão do ECMAScript sai (A famosa ESNext), logo depois os browsers/
 
 É para qual padrão o typescript irá converter o seu código no build, geralmente usamos commonjs para abranger todos os ambientes. Lembrando que o module commonjs
 não irá converter todas as features do ES no build da aplicação, aparentemente ele só mudar o import e export pra require e exports.
+
+Git
+
+git commit --amend --no-edit
+
+Pega um trabalho que será commitado e adiciona no último commit sem editar o comentário do commit.
