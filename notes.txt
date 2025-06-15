@@ -42,3 +42,117 @@ Git
 git commit --amend --no-edit
 
 Pega um trabalho que será commitado e adiciona no último commit sem editar o comentário do commit.
+
+Arquitetura
+
+A melhor maneira de estruturar um projeto é criando uma arquitetura que facilite a manutenção futura.
+
+Como NÃO fazer?
+
+Controler
+    Lib de Auth
+    Lib de Encriptografia
+    Banco de dados
+    Lib de requisição
+    Validadores de dados
+
+Perceba que temos tudo ligado ao componente controlador, ou seja, o meu controlador está apontando para todas as depedências externas.
+
+O meu componente controlador precisa da lib para funcionar.
+
+Neste modelo caso precise mudar alguma lib, teremos que mudar toda a nossa implementação, isso de todos os controladores.
+
+Como eu resolvo isso?
+
+Eu resolvo isso utilizando a inversão de depedência.
+
+Para realizar isso eu preciso criar um Adapter, ele servirá de ponte entre a bilioteca e o meu controlador.
+
+Ex:
+
+    SignUpController <- ExpressRouteAdapter -> Express
+
+Neste caso também é legal abstrair o que seria um Controller e criar uma classe Controller onde todos os Controllers a implementarão.
+
+A forma que o ExpressRouteAdapter conversa com o SignUpController é justamente através dessa classe Controller, ela identifica que aquele componente é um
+Controller através dessa implementação de interface.
+
+Ex: 
+
+Antes
+
+    SignUpController -> Validator
+
+Depois 
+
+    Validator <- EmailValidatorAdapter -> EmailValidator <- SignUpController
+
+Aqui seguimos a mesma ideia, criamos um adapter para desvicular a ligação direta do meu validator com a minha Controller e depois invertemos a depedência,
+agora quem vai precisar do Validator para funcionar é o EmailValidatorAdapter e como forma de comunicação entre a SignUpController e o EmailValidatorAdapter,
+criamos a Interface EmailValidator.
+
+A Regra é clara, não devemos ter depedências externas na nossa classe de Controller, quando isso acontecer, devemos criar um adapter e inverter a depedência.
+
+**Camadas**
+
+Camada de Main = Camada que une as depedências e injeta nas outras camadas, é uma camada de composição.
+Camada de Presentation = É a camada onde armazeno tudo que diz respeito a entrada e saída de dados (Interfaces, Controladores e etc). Não existe regra de negócio nessa camada.
+Camada de Domain = É onde fica armazenada a regra de negócio das Controllers. Teremos somente protocolos (interfaces) que dizem qual será nossa regra de negócio.
+Camada de Data = É a camada que fazemos implementações da nossa regra de negócio (Domain Layer).
+Camada de Utils = É a camada mais genérica do nosso projeto, é lá onde vamos armazenar elementos sem contexto que serão usados em todo o projeto.
+Camada de Infra = É a camada que faz implementações de interfaces voltadas pra framework.
+
+Presentation -> Domain
+Data -> Domain
+Infra -> Data
+
+**Camada de Domain**
+
+Na nossa camada de Domain é onde iremos definir o contrato da nossa regra de negócio.
+
+Ex: SignUp -> Criação de conta
+
+    AddAccount (Interface)
+
+**Camada de Data**
+
+Já na camada de Data iremos implementar essa Interface.
+
+Ex:
+
+    DbAddAccount
+
+Usamos Db na frente do nome pois os dados serão fornecidos pelo banco de dados.
+
+**Camada de Infra**
+
+Na Camada de Infra faremos a ligação com frameworks, resaltando que também criamos um Adapter para não ligar diretamente o meu componente a depedência externa.
+
+Ex: framework de criptografia de dados
+
+    BCrypt <- BCryptAdapter
+
+Dessa maneira o meu Adapter necessita do BCrypt para funcionar.
+
+Nossa camada de Infra é ligada com a camada de Data pois é nela que temos a implementação da interface da regra de negócio contida na Domain.
+
+Para ligar a nossa camada de Infra com a camada de Data precisamos estabelecer um contrato para ambas se comunicarem pois caso algum dia a lib mudar, eu consigo
+mudar facilmente a minha implementação.
+
+Então ficaria assim:
+
+    Bcrypt <- BCryptAdapter -> Encrypter (Interface da camada de Data) <- DbAddAccount
+
+Outro Ex: MongoDb
+
+    AddUserMongoRepo -> MongoDb
+
+    MongoDb <- AddUserMongoRepo -> AddUserRepo (Inferface da camada de Data) <- DbAddAccount
+
+TDD
+
+Sempre começamos pelo teste, sendo que ele dará erro logo de início pois não teremos o código de fato ainda.
+
+Depois implementamos o mínimo possível para conseguir executar aquele teste.
+
+Após isto, implementamos outro cenário de teste que quebrará até implementarmos o código no qual podemos quebrar os outros casos.
