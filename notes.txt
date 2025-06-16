@@ -159,6 +159,10 @@ Protocols = responsável por guardar as interfaces referente a camada de apresen
 Errors = responsável por guardar as interfaces de erro customizados.
 Helpers = responsável por armazenar utilitários que não se encaixam nas pastas acima.
 
+**Camada de Utils**
+
+É nessa camada que criamos os Validators pois se caso alguma outra Controller precisar validar esse mesmo dado, não precisamos reescrever código.
+
 TDD
 
 Sempre começamos pelo teste, sendo que ele dará erro logo de início pois não teremos o código de fato ainda.
@@ -166,3 +170,15 @@ Sempre começamos pelo teste, sendo que ele dará erro logo de início pois não
 Depois implementamos o mínimo possível para conseguir executar aquele teste.
 
 Após isto, implementamos outro cenário de teste que quebrará até implementarmos o código no qual podemos quebrar os outros casos.
+
+É uma boa prática criar "factories" na criação do nosso SUT (System under testing) pois assim facilita a injeção de mocks de depedências.
+
+Stub = É um dublê de função no qual criamos uma função fake e setamos um retorno "chumbado".
+
+** Mock **
+
+Um Mock em sí, nunca está preocupado com a implementação de seu código, a ideia sempre é manipular o retorno das depedências para conseguir de fato testar
+a unidade.
+
+Uma boa prática para trabalhar com Mock é sempre inicializar o mesmo como positivo e adaptar os cenários específicos como false.
+
