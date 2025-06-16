@@ -153,7 +153,10 @@ Outro Ex: MongoDb
 
 É a camada de apresentação, ou seja, de entrada e saída de dados.
 
-Nesta camada teremos a pasta de Protocols que será onde guardaremos as interfaces referente a camada de apresentação.
+* Pastas * 
+
+Protocols = responsável por guardar as interfaces referente a camada de apresentação.
+Errors =  por guardar as interfaces de erro customizados.
 
 TDD
 
