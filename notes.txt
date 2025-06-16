@@ -149,6 +149,12 @@ Outro Ex: MongoDb
 
     MongoDb <- AddUserMongoRepo -> AddUserRepo (Inferface da camada de Data) <- DbAddAccount
 
+** Camada de Presentation **
+
+É a camada de apresentação, ou seja, de entrada e saída de dados.
+
+Nesta camada teremos a pasta de Protocols que será onde guardaremos as interfaces referente a camada de apresentação.
+
 TDD
 
 Sempre começamos pelo teste, sendo que ele dará erro logo de início pois não teremos o código de fato ainda.
