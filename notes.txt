@@ -156,7 +156,8 @@ Outro Ex: MongoDb
 * Pastas * 
 
 Protocols = responsável por guardar as interfaces referente a camada de apresentação.
-Errors =  por guardar as interfaces de erro customizados.
+Errors = responsável por guardar as interfaces de erro customizados.
+Helpers = responsável por armazenar utilitários que não se encaixam nas pastas acima.
 
 TDD
 
