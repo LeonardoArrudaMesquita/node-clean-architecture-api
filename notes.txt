@@ -158,6 +158,8 @@ Outro Ex: MongoDb
 
 É a camada de apresentação, ou seja, de entrada e saída de dados.
 
+Podemos criar um arquivo de Protocols para cada controller, para armazenar os Protocols específicos daquele controller.
+
 * Pastas * 
 
 Protocols = responsável por guardar as interfaces referente a camada de apresentação.
