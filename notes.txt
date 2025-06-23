@@ -97,7 +97,7 @@ A Regra é clara, não devemos ter depedências externas na nossa classe de Cont
 
 Camada de Main = Camada que une as depedências e injeta nas outras camadas, é uma camada de composição.
 Camada de Presentation = É a camada onde armazeno tudo que diz respeito a entrada e saída de dados (Interfaces, Controladores e etc). Não existe regra de negócio nessa camada.
-Camada de Domain = É onde fica armazenada a regra de negócio das Controllers. Teremos somente protocolos (interfaces) que dizem qual será nossa regra de negócio.
+Camada de Domain = É onde fica armazenada a regra de negócio das Controllers. Teremos somente interfaces que dizem qual será nossa regra de negócio.
 Camada de Data = É a camada que fazemos implementações da nossa regra de negócio (Domain Layer).
 Camada de Utils = É a camada mais genérica do nosso projeto, é lá onde vamos armazenar elementos sem contexto que serão usados em todo o projeto.
 Camada de Infra = É a camada que faz implementações de interfaces voltadas pra framework.
@@ -113,6 +113,11 @@ Na nossa camada de Domain é onde iremos definir o contrato da nossa regra de ne
 Ex: SignUp -> Criação de conta
 
     AddAccount (Interface)
+
+* Pastas * 
+
+use-cases = interfaces que dizem respeito a algum caso de uso.
+models = interfaces que dizem respeito a entidades do seu sistema.
 
 **Camada de Data**
 
