@@ -129,6 +129,11 @@ Ex:
 
 Usamos Db na frente do nome pois os dados serão fornecidos pelo banco de dados.
 
+PASTAS
+
+use-cases = implementação da regras de negócio definidas no domain
+protocols = protocolos de lib externas, o nosso use-cases só terá regra de negócio, qualquer depedência deve ser inserida de forma externa. 
+
 **Camada de Infra**
 
 Na Camada de Infra faremos a ligação com frameworks, resaltando que também criamos um Adapter para não ligar diretamente o meu componente a depedência externa.
