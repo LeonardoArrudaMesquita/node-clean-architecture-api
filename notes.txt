@@ -159,6 +159,9 @@ Outro Ex: MongoDb
 
     MongoDb <- AddUserMongoRepo -> AddUserRepo (Inferface da camada de Data) <- DbAddAccount
 
+OBS: A Camada de Infra não pode enchergar a camada de Domain, ele deveria enchergar apenas o Data Layer, porém para não ter que replicar os modelos que estão no domain, então
+abrimos essa excessão.
+
 ** Camada de Presentation **
 
 É a camada de apresentação, ou seja, de entrada e saída de dados.
