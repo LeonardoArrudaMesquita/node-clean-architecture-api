@@ -159,6 +159,8 @@ Outro Ex: MongoDb
 
     MongoDb <- AddUserMongoRepo -> AddUserRepo (Inferface da camada de Data) <- DbAddAccount
 
+Ao criar o adapter dos frameworks utilizados, é interessante implementar os protocolos criados no data/protocols.
+
 OBS: A Camada de Infra não pode enchergar a camada de Domain, ele deveria enchergar apenas o Data Layer, porém para não ter que replicar os modelos que estão no domain, então
 abrimos essa excessão.
 
