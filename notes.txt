@@ -136,7 +136,7 @@ protocols = protocolos de lib externas, o nosso use-cases só terá regra de neg
 
 **Camada de Infra**
 
-Na Camada de Infra faremos a ligação com frameworks, resaltando que também criamos um Adapter para não ligar diretamente o meu componente a depedência externa.
+Na Camada de Infra faremos a ligação com frameworks (importaremos libs de terceiros), resaltando que também criamos um Adapter para não ligar diretamente o meu componente a depedência externa.
 
 Ex: framework de criptografia de dados
 
