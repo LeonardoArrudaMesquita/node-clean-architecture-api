@@ -3,13 +3,16 @@ import { AccountMongoRepository } from './account'
 
 describe('Account Mongo Repository', () => {
   beforeAll(async () => {
-    console.log('Antes')
     await MongoHelper.connect(process.env.MONGO_URL ?? '')
   })
 
   afterAll(async () => {
-    console.log('Depois')
     await MongoHelper.disconnect()
+  })
+
+  beforeEach(async () => {
+    const accountCollection = MongoHelper.getCollection('accounts')
+    await accountCollection.deleteMany({})
   })
 
   const makeSut = (): AccountMongoRepository => {
