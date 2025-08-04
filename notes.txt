@@ -106,6 +106,12 @@ Presentation -> Domain
 Data -> Domain
 Infra -> Data
 
+**Camada de Main**
+
+É a camada onde criamos as instâncias de todas as outras camadas.
+
+Por ser uma camada de composição, não tem muito valor fazer teste unitário, somente de integração.
+
 **Camada de Domain**
 
 Na nossa camada de Domain é onde iremos definir o contrato da nossa regra de negócio.
